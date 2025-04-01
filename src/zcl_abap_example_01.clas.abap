@@ -77,6 +77,7 @@ CLASS zcl_abap_example_01 IMPLEMENTATION.
     CLEAR: lt_material_data[].
     "UNASSIGN: <lwa_material_data>.
 
+    DATA(lwa_material_data) = lt_material_data[ mtrct = 'A1' ].
 
   ENDMETHOD.
 ENDCLASS.
