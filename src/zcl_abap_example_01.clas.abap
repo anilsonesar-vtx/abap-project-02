@@ -68,8 +68,14 @@ CLASS zcl_abap_example_01 IMPLEMENTATION.
 
     "---------- This might lead to dump if LOOP is unsuccessful -----------
     "CLEAR: lt_material_data[], <lwa_material_data>.
+
+    "---------- This is fixed after further review ----------
+    IF <lwa_material_data> IS ASSIGNED.
+      UNASSIGN: <lwa_material_data>.
+    ENDIF.
+
     CLEAR: lt_material_data[].
-    UNASSIGN: <lwa_material_data>.
+    "UNASSIGN: <lwa_material_data>.
 
 
   ENDMETHOD.
