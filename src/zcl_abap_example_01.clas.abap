@@ -18,8 +18,11 @@ CLASS zcl_abap_example_01 IMPLEMENTATION.
   METHOD if_oo_adt_classrun~main.
       out->write( 'Hello World!' ).
 
-    DATA: lv_customer_type_filter TYPE i.
+    " ---------- Customer Type Filter not used after Review ----------
+    "DATA: lv_customer_type_filter TYPE i.
+
     DATA: lv_material_field TYPE string.
+
     DATA: lt_material_data TYPE TABLE OF /vgm/vd0arphd.
 
     " Fetch data from /vgm/vd0arphd into lt_material_data
@@ -31,15 +34,30 @@ CLASS zcl_abap_example_01 IMPLEMENTATION.
     " Loop through the data.
     LOOP AT lt_material_data ASSIGNING FIELD-SYMBOL(<lwa_material_data>).
 
-      IF lv_material_field EQ 'A'.
+
+      " ---------- IF Condition is changed after Review ----------
+      " IF lv_material_field EQ 'A'.
+      IF lv_material_field NE 'A'.
+
+        lv_material_field = <lwa_material_data>-mtrnr.
+
         <lwa_material_data>-country = 'US'.
+
       ENDIF.
 
+      "---------- Redundant Check SELECT is already providing desired results, Changed after Review ----------
+      "CHECK <lwa_material_data>-mtrct EQ 'RP'.
 
-      CHECK <lwa_material_data>-mtrct EQ 'RP'.
 
-      lv_material_field = <lwa_material_data>-mtrnr.
+      "---------- This modification could leads to invalid behaviour, Fixed after Review ----------
+      "lv_material_field = <lwa_material_data>-mtrnr.
+
+
+      UNASSIGN: <lwa_material_data>.
+
     ENDLOOP.
+
+    CLEAR: lt_material_data[], <lwa_material_data>.
 
   ENDMETHOD.
 ENDCLASS.
