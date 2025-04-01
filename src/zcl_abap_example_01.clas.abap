@@ -25,11 +25,20 @@ CLASS zcl_abap_example_01 IMPLEMENTATION.
 
     DATA: lt_material_data TYPE TABLE OF /vgm/vd0arphd.
 
+    " ---------- This is a fixed after code-review by Gemini ----------
+    TRY.
+
     " Fetch data from /vgm/vd0arphd into lt_material_data
     SELECT *
     FROM /vgm/vd0arphd
     INTO TABLE lt_material_data
     WHERE mtrct EQ 'RP'.
+
+    CATCH cx_sy_open_sql_db INTO DATA(lref_sql_error).
+      " Handle SQL error
+      out->write( 'SQL Error: ' && lref_sql_error->get_text( ) ).
+
+    ENDTRY.
 
     " Loop through the data.
     LOOP AT lt_material_data ASSIGNING FIELD-SYMBOL(<lwa_material_data>).
