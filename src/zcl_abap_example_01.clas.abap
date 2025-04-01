@@ -52,12 +52,16 @@ CLASS zcl_abap_example_01 IMPLEMENTATION.
       "---------- This modification could leads to invalid behaviour, Fixed after Review ----------
       "lv_material_field = <lwa_material_data>-mtrnr.
 
-
-      UNASSIGN: <lwa_material_data>.
+      "---------- This would lead to dump in the LOOP -----------
+      "UNASSIGN: <lwa_material_data>.
 
     ENDLOOP.
 
-    CLEAR: lt_material_data[], <lwa_material_data>.
+    "---------- This might lead to dump if LOOP is unsuccessful -----------
+    "CLEAR: lt_material_data[], <lwa_material_data>.
+    CLEAR: lt_material_data[].
+    UNASSIGN: <lwa_material_data>.
+
 
   ENDMETHOD.
 ENDCLASS.
