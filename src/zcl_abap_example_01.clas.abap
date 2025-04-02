@@ -79,5 +79,7 @@ CLASS zcl_abap_example_01 IMPLEMENTATION.
 
     DATA(lwa_material_data) = lt_material_data[ mtrct = 'A1' ].
 
+    lwa_material_data = lt_material_data[ mtrct = 'A2' ].
+
   ENDMETHOD.
 ENDCLASS.
