@@ -22,7 +22,8 @@ CLASS zcl_abap_example_01 IMPLEMENTATION.
     SELECT *
     FROM /vgm/vd0arphd
     INTO TABLE @DATA(lt_material_data)
-    WHERE mtrct EQ 'RP'.
+    WHERE mtrct EQ 'RP'
+      AND mtrnr NE ''.
 
 
   ENDMETHOD.
