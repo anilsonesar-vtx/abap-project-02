@@ -23,7 +23,8 @@ CLASS zcl_abap_example_01 IMPLEMENTATION.
     FROM /vgm/vd0arphd
     INTO TABLE @DATA(lt_material_data)
     WHERE mtrct EQ 'RP'
-      AND mtrnr NE ''.
+      AND mtrnr NE ''
+      AND ExTid NE ''.
 
 
   ENDMETHOD.
