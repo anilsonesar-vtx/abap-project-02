@@ -1,18 +1,20 @@
-CLASS zcl_abap_example_01 DEFINITION
-  PUBLIC
-  FINAL
-  CREATE PUBLIC .
+class ZCL_ABAP_EXAMPLE_01 definition
+  public
+  final
+  create public .
 
-  PUBLIC SECTION.
+public section.
 
-    INTERFACES if_oo_adt_classrun .
+  interfaces IF_OO_ADT_CLASSRUN .
+
+  methods INIT_DATA .
   PROTECTED SECTION.
   PRIVATE SECTION.
 ENDCLASS.
 
 
 
-CLASS zcl_abap_example_01 IMPLEMENTATION.
+CLASS ZCL_ABAP_EXAMPLE_01 IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.
@@ -32,6 +34,15 @@ CLASS zcl_abap_example_01 IMPLEMENTATION.
      LOOP AT <lt_table> ASSIGNING FIELD-SYMBOL(<lwa_data>).
      ENDLOOP.
 
+
+  ENDMETHOD.
+
+
+  METHOD init_data.
+
+    DATA: lv_variable TYPE i.
+
+    DATA: lv_variable_2 TYPE i.
 
   ENDMETHOD.
 ENDCLASS.

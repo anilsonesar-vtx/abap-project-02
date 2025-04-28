@@ -1,0 +1,21 @@
+CLASS z_dummy_class_a01 DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+
+    INTERFACES if_oo_adt_classrun .
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+
+
+CLASS z_dummy_class_a01 IMPLEMENTATION.
+
+
+  METHOD if_oo_adt_classrun~main.
+
+  ENDMETHOD.
+ENDCLASS.
